@@ -11,6 +11,7 @@
 	],
 	"dependencies": {
 		"bufferutil": "^3.0.2",
+      "node-libs-react-native": "^1.0.3",
 		"promise": "^8.0.1",
 		"utf-8-validate": "^3.0.3",
 		"ws": "^3.1.0"
@@ -19,14 +20,14 @@
 		"type": "git",
 		"url": "https://github.com/wwwg/kahoot.js"
 	},
-    "bugs": {
-        "url": "https://github.com/wwwg/kahoot.js/issues"
-    },
-    "contributors": [
-        "Casper Löfgren <casper.lofgren@hotmail.com>"
-    ],
-    "engines": {
-        "node": ">= 6.0.0"
-    },
+  "bugs": {
+    "url": "https://github.com/wwwg/kahoot.js/issues"
+  },
+  "contributors": [
+    "Casper Löfgren <casper.lofgren@hotmail.com>"
+  ],
+  "engines": {
+    "node": ">= 6.0.0"
+  },
 	"license": "MIT"
 }

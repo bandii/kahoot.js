@@ -1,5 +1,5 @@
 module.exports = {
-	ENDPOINT_URI: "kahoot.it",
+    ENDPOINT_URI: "https://kahoot.it",
 	ENDPOINT_PORT: 443,
 	TOKEN_ENDPOINT: "/reserve/session/",
 	EVAL_: "var _ = {" +
@@ -19,4 +19,4 @@ module.exports = {
 		"websocket",
 		"long-polling"
 	]
-}
+};
