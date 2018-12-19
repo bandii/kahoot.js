@@ -1,85 +1,94 @@
-var consts = require("./consts");
+import consts from "./tokenConsts";
 
 class TokenJS {
-    onResponse;
+    static _solveChallenge(challenge) {
+        let solved = "";
 
-    static solveChallenge(challenge) {
-        var solved = "";
         // Prevent any logging from the challenge, by default it logs some debug info
         challenge = challenge.replace("console.", "");
+
         // Make a few if-statements always return true as the functions are currently missing
         challenge = challenge.replace("this.angular.isObject(offset)", "true");
         challenge = challenge.replace("this.angular.isString(offset)", "true");
         challenge = challenge.replace("this.angular.isDate(offset)", "true");
         challenge = challenge.replace("this.angular.isArray(offset)", "true");
+
         (() => {
             // Concat the method needed in order to solve the challenge, then eval the string
-            var solver = Function(consts.EVAL_ + challenge);
+            let solver = Function(consts.EVAL_ + challenge);
             // Execute the string, and get back the solved token
             solved = solver().toString();
         })();
+
         return solved;
     }
 
-    static decodeBase64(b64) {
+    static _decodeBase64(b64) {
         // for the session token
         return new Buffer(b64, "base64").toString("ascii");
     }
 
-    static concatTokens(headerToken, challengeToken) {
+    static _concatTokens(headerToken, challengeToken) {
         // Combine the session token and the challenge token together to get the string needed to connect to the websocket endpoint
-        for (var token = "", i = 0; i < headerToken.length; i++) {
-            var char = headerToken.charCodeAt(i);
-            var mod = challengeToken.charCodeAt(i % challengeToken.length);
-            var decodedChar = char ^ mod;
+        let token = "";
+
+        for (let i = 0; i < headerToken.length; i++) {
+            let char = headerToken.charCodeAt(i);
+            let mod = challengeToken.charCodeAt(i % challengeToken.length);
+            let decodedChar = char ^ mod;
             token += String.fromCharCode(decodedChar);
         }
+
         return token;
     }
 
     static resolve(sessionID, callback) {
         let me = new TokenJS();
-        me.requestToken(sessionID, (headerToken, challenge) => {
-            let token1 = this.decodeBase64(headerToken);
-            let token2 = this.solveChallenge(challenge);
-            let resolvedToken = this.concatTokens(token1, token2);
-            callback(resolvedToken);
+
+        me._requestToken(sessionID, (headerToken, challenge,
+                                     responseCode, responseMessage) => {
+            if (responseCode === consts.INNER_RESPONSES.OK
+                && headerToken && challenge) {
+                let token1 = TokenJS._decodeBase64(headerToken);
+                let token2 = TokenJS._solveChallenge(challenge);
+                let resolvedToken = TokenJS._concatTokens(token1, token2, responseCode, responseMessage);
+                callback(resolvedToken, responseCode, responseMessage);
+            } else {
+                callback(null, responseCode, responseMessage);
+            }
         });
     }
 
-    requestToken(sessionID, callback) {
-        this.onResponse = callback;
-
-        fetch(consts.ENDPOINT_URI + "/reserve/session/" + sessionID, {
+    _requestToken(sessionID, callback) {
+        fetch(consts.ENDPOINT_URI + consts.TOKEN_ENDPOINT + sessionID, {
             method: 'get',
-            headers: new Headers({
-                "user-agent": "kahoot.js",
-                "host": "kahoot.it",
-                "referer": "https://kahoot.it/",
-                "accept-language": "en-US,en;q=0.8",
-                "accept": "*/*"
-            })
+            headers: new Headers(consts.HEADERS)
         })
             .then((response) => {
                 // The first token is the session token, which is given as a header by the server encoded in base64
                 // Checking if the header is defined before continuing, basically checking if the room exists.
-                if (!response.headers || !response.headers.map || !response.headers.map['x-kahoot-session-token']) {
-                    return console.log("request error:", "Kahoot session header is undefined. (This normally means that the room no longer exists.)")
+                if (response.status === 200) {
+                    if (!response.headers || !response.headers.map || !response.headers.map['x-kahoot-session-token']) {
+                        callback(null, null,
+                            consts.INNER_RESPONSES.MISSING_HEADER,
+                            "Kahoot session header is undefined. (This normally means that the room no longer exists.)");
+                    }
+                } else {
+                    callback(null, null,
+                        consts.INNER_RESPONSES.REQUEST_FAILED,
+                        "Connection error happened when trying to connect to the game."
+                        + response.statusText ? " \r\n" + response.statusText : "");
                 }
 
-                let token1 = response.headers.map['x-kahoot-session-token'];
                 response.json().then((responseJson) => {
                     // The second token is given as a "challenge", which must be eval'd by the client to be decoded
-                    let challenge = responseJson.challenge;
-                    this.onResponse(token1, challenge);
-
-                    console.log("Response json: " + response);
+                    callback(response.headers.map['x-kahoot-session-token'],
+                        responseJson.challenge,
+                        consts.INNER_RESPONSES.OK);
                 });
-
-                console.log("Response object: " + response);
             })
             .catch((error) => {
-                console.error(error);
+                new Error(error);
             });
     }
 }

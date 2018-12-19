@@ -1,8 +1,9 @@
-const EventEmitter = require("events");
-var Promise = require("promise");
-var Assets = require("./Assets.js");
-var WSHandler = require("./WSHandler.js");
-var token = require("./token.js");
+import EventEmitter from "events";
+import Promise from "promise";
+import Assets from "./Assets.js";
+import WSHandler from "./WSHandler.js";
+import token from "./token";
+import consts from "./tokenConsts";
 
 global.Buffer = require('buffer').Buffer;
 
@@ -22,18 +23,32 @@ class Kahoot extends EventEmitter {
 
     join(session, name) {
         var me = this;
+
         return new Promise((fulfill, reject) => {
             if (!session) {
                 reject("You need a sessionID to connect to a Kahoot!");
                 return;
             }
+
             if (!name) {
                 reject("You need a name to connect to a Kahoot!");
                 return;
             }
+
             me.sessionID = session;
             me.name = name;
-            token.resolve(session, resolvedToken => {
+            token.resolve(session, (resolvedToken,
+                                    responseCode,
+                                    responseMessage) => {
+                if (responseCode !== consts.INNER_RESPONSES.OK) {
+                    reject("Error happened while connecting to the server!");
+                    return;
+                }
+                if (!resolvedToken) {
+                    reject("Could not get a valid token!");
+                    return;
+                }
+
                 me.token = resolvedToken;
                 me._wsHandler = new WSHandler(me.sessionID, me.token, me);
                 me._wsHandler.on("ready", () => {

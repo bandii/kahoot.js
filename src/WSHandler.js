@@ -1,6 +1,5 @@
-const EventEmitter = require("events");
-var Promise = require("promise");
-var consts = require("./consts.js");
+import EventEmitter from "events";
+import consts from "./wsConsts.js";
 
 class WSHandler extends EventEmitter {
     constructor(session, token, kahoot) {

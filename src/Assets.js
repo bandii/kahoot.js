@@ -1,5 +1,3 @@
-var Promise = require("promise");
-
 class Quiz {
 	constructor(name, type, answerCount, client) {
 		this.client = client;
@@ -104,4 +102,4 @@ module.exports = {
 	Nemesis: Nemesis,
 	FinishTextEvent: FinishTextEvent,
 	QuizFinishEvent: QuizFinishEvent
-}
+};
