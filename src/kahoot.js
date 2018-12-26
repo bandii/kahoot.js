@@ -87,6 +87,8 @@ class Kahoot extends EventEmitter {
                     try {
                         this._qFulfill(e);
                     } catch (e) {
+                        console.error(e.message);
+                        this.emit(gameConsts.ERROR, e.message);
                     }
                 });
                 this._wsHandler.on(gameConsts.FINISH_TEXT, data => {

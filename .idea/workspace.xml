@@ -4,6 +4,8 @@
     <list default="true" id="c38ce5c2-07e2-4228-801d-4f746ed06d3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WSHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameConsts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameConsts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kahoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kahoot.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,8 +21,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kahoot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1904">
-              <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
+            <state relative-caret-position="219">
+              <caret line="73" column="53" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -28,11 +33,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WSHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="556">
-              <caret line="213" column="20" selection-start-line="213" selection-start-column="20" selection-end-line="213" selection-end-column="20" />
+            <state relative-caret-position="274">
+              <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Assets.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="107" column="17" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -48,12 +62,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TOKEN_ENDPOINT</find>
-      <find>header</find>
-      <find>onResponse</find>
-      <find>TOKEN_RESPONSES</find>
-      <find>questionStart</find>
-      <find>OPEN</find>
       <find>LOGIN</find>
       <find>responsemessage</find>
       <find>let</find>
@@ -66,7 +74,6 @@
       <find>question</find>
       <find>lastReceivedQ</find>
       <find>consts</find>
-      <find>var</find>
       <find>error</find>
       <find>ws.close</find>
       <find>me)</find>
@@ -75,9 +82,16 @@
       <find>on(gameConsts.FINISH</find>
       <find>QUIZ_DATA</find>
       <find>sendSubmit</find>
-      <find>_wsHandler</find>
       <find>me.</find>
       <find>me =</find>
+      <find>this.this</find>
+      <find>var</find>
+      <find>cat</find>
+      <find>_wsHandler</find>
+      <find>QUIZ_END</find>
+      <find>QUESTION_END</find>
+      <find>dataHandler</find>
+      <find>datahandler</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,7 +199,7 @@
       <updated>1545164425651</updated>
       <workItem from="1545164427057" duration="6633000" />
       <workItem from="1545243966519" duration="5936000" />
-      <workItem from="1545827785014" duration="9652000" />
+      <workItem from="1545827785014" duration="12123000" />
     </task>
     <task id="LOCAL-00001" summary="First successfull connection to a game within a react-native app">
       <created>1545250099131</created>
@@ -215,21 +229,28 @@
       <option name="project" value="LOCAL" />
       <updated>1545837784522</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Change 'me' to this">
+      <created>1545838011629</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1545838011629</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22221000" />
+    <option name="totallyTimeSpent" value="24692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17977528" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17977528" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.51133144" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.29886687" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3101983" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -257,7 +278,8 @@
     <MESSAGE value="- Change imports&#10;- Minor refactor on the token.js&#10;- token.js will be a little more talkative at errors&#10;- possible errors from token.js (Promise.rejections)&#10;- Separating the constants&#10;- Modifying the examples" />
     <MESSAGE value="- Define game related constants" />
     <MESSAGE value="- Constans in the wsHandler" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Constans in the wsHandler" />
+    <MESSAGE value="- Change 'me' to this" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Change 'me' to this" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -266,27 +288,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/kahoot.js</url>
-          <line>88</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
-          <line>268</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
-          <line>237</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/kahoot.js</url>
           <line>64</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
+          <line>162</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/kahoot.js</url>
+          <line>73</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -400,22 +416,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assets.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="10" />
+        <state relative-caret-position="454">
+          <caret line="107" column="17" selection-start-line="107" selection-start-column="17" selection-end-line="107" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kahoot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
+        <state relative-caret-position="219">
+          <caret line="73" column="53" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WSHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="213" column="20" selection-start-line="213" selection-start-column="20" selection-end-line="213" selection-end-column="20" />
+        <state relative-caret-position="274">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>

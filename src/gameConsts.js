@@ -7,7 +7,7 @@ module.exports = {
     QUIZ: "quiz",
     QUIZ_UPDATE: "quizUpdate",
     QUESTION: "question",
-    QUIZ_END: "questionEnd",
+    QUIZ_END: "quiz_end",
     DISCONNECT: "disconnect",
     QUESTION_SUBMIT: "questionSubmit",
     QUESTION_END: "questionEnd",
