@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c38ce5c2-07e2-4228-801d-4f746ed06d3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Assets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WSHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameConsts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameConsts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kahoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kahoot.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WSHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="280" column="34" selection-start-line="280" selection-start-column="34" selection-end-line="280" selection-end-column="34" />
+            <state relative-caret-position="556">
+              <caret line="213" column="20" selection-start-line="213" selection-start-column="20" selection-end-line="213" selection-end-column="20" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -51,7 +48,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>resol</find>
       <find>TOKEN_ENDPOINT</find>
       <find>header</find>
       <find>onResponse</find>
@@ -73,7 +69,6 @@
       <find>var</find>
       <find>error</find>
       <find>ws.close</find>
-      <find>me.</find>
       <find>me)</find>
       <find>let me</find>
       <find>Quiz</find>
@@ -81,6 +76,8 @@
       <find>QUIZ_DATA</find>
       <find>sendSubmit</find>
       <find>_wsHandler</find>
+      <find>me.</find>
+      <find>me =</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,7 +185,7 @@
       <updated>1545164425651</updated>
       <workItem from="1545164427057" duration="6633000" />
       <workItem from="1545243966519" duration="5936000" />
-      <workItem from="1545827785014" duration="9398000" />
+      <workItem from="1545827785014" duration="9652000" />
     </task>
     <task id="LOCAL-00001" summary="First successfull connection to a game within a react-native app">
       <created>1545250099131</created>
@@ -211,11 +208,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545831932955</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="- Constans in the wsHandler">
+      <created>1545837784522</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1545837784522</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21967000" />
+    <option name="totallyTimeSpent" value="22221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -252,7 +256,8 @@
     <MESSAGE value="- Change imports&#10;- Minor refactor on the token.js&#10;- token.js will be a little more talkative at errors&#10;- possible errors from token.js (Promise.rejections)&#10;- Separating the constants" />
     <MESSAGE value="- Change imports&#10;- Minor refactor on the token.js&#10;- token.js will be a little more talkative at errors&#10;- possible errors from token.js (Promise.rejections)&#10;- Separating the constants&#10;- Modifying the examples" />
     <MESSAGE value="- Define game related constants" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Define game related constants" />
+    <MESSAGE value="- Constans in the wsHandler" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Constans in the wsHandler" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -267,13 +272,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
-          <line>275</line>
+          <line>268</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
-          <line>243</line>
+          <line>237</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
@@ -409,8 +414,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WSHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="280" column="34" selection-start-line="280" selection-start-column="34" selection-end-line="280" selection-end-column="34" />
+        <state relative-caret-position="556">
+          <caret line="213" column="20" selection-start-line="213" selection-start-column="20" selection-end-line="213" selection-end-column="20" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>

@@ -5,7 +5,6 @@ import gameConsts from "./gameConsts";
 class WSHandler extends EventEmitter {
     constructor(session, token, kahoot) {
         super();
-        var me = this;
         this.kahoot = kahoot;
         this.msgID = 0;
         this.clientID = "_none_";
@@ -17,30 +16,30 @@ class WSHandler extends EventEmitter {
         this.ws = new WebSocket(consts.WSS_ENDPOINT + session + "/" + token);
         // Create anonymous callbacks to prevent an event emitter loop
         this.ws.onopen = () => {
-            me.open();
+            this.open();
         };
         this.ws.onmessage = msg => {
-            me.message(msg);
+            this.message(msg);
         };
         this.ws.onclose = () => {
-            me.connected = false;
-            me.close();
+            this.connected = false;
+            this.close();
         };
         this.ws.onerror = () => {
-            me.emit(gameConsts.ERROR, data.data.error);
+            this.emit(gameConsts.ERROR, data.data.error);
         };
         this.dataHandler = {
             1: (data, content) => {
-                if (!me.kahoot.quiz.currentQuestion) {
-                    me.emit(gameConsts.QUIZ_UPDATE, {
+                if (!this.kahoot.quiz.currentQuestion) {
+                    this.emit(gameConsts.QUIZ_UPDATE, {
                         questionIndex: content.questionIndex,
                         timeLeft: content.timeLeft,
                         type: content.gameBlockType,
                         useStoryBlocks: content.canAccessStoryBlocks,
                         ansMap: content.answerMap
                     });
-                } else if (content.questionIndex > me.kahoot.quiz.currentQuestion.index) {
-                    me.emit(gameConsts.QUIZ_UPDATE, {
+                } else if (content.questionIndex > this.kahoot.quiz.currentQuestion.index) {
+                    this.emit(gameConsts.QUIZ_UPDATE, {
                         questionIndex: content.questionIndex,
                         timeLeft: content.timeLeft,
                         type: content.gameBlockType,
@@ -50,10 +49,10 @@ class WSHandler extends EventEmitter {
                 }
             },
             2: (data, content) => {
-                me.emit(gameConsts.QUESTION_START);
+                this.emit(gameConsts.QUESTION_START);
             },
             3: (data, content) => {
-                me.emit(gameConsts.FINISH, {
+                this.emit(gameConsts.FINISH, {
                     playerCount: content.playerCount,
                     quizID: content.quizID,
                     rank: content.rank,
@@ -62,11 +61,11 @@ class WSHandler extends EventEmitter {
                 });
             },
             7: (data, content) => {
-                me.emit(gameConsts.QUESTION_SUBMIT, content.primaryMessage);
+                this.emit(gameConsts.QUESTION_SUBMIT, content.primaryMessage);
             },
             8: (data, content) => {
                 // console.log(data);
-                me.emit(gameConsts.QUESTION_END, {
+                this.emit(gameConsts.QUESTION_END, {
                     correctAnswers: content.correctAnswers,
                     correct: content.isCorrect,
                     points: content.points,
@@ -78,9 +77,9 @@ class WSHandler extends EventEmitter {
                 });
             },
             9: (data, content) => {
-                if (!me.firstQuizEvent) {
-                    me.firstQuizEvent = true;
-                    me.emit(gameConsts.QUIZ_DATA, {
+                if (!this.firstQuizEvent) {
+                    this.firstQuizEvent = true;
+                    this.emit(gameConsts.QUIZ_DATA, {
                         name: content.quizName,
                         type: content.quizType,
                         qCount: content.quizQuestionAnswers[0]
@@ -89,15 +88,15 @@ class WSHandler extends EventEmitter {
             },
             10: (data, content) => {
                 // The quiz has ended
-                me.emit(gameConsts.QUIZ_END);
+                this.emit(gameConsts.QUIZ_END);
                 try {
-                    me.ws.close();
+                    this.ws.close();
                 } catch (e) {
                     // Most likely already closed
                 }
             },
             13: (data, content) => {
-                me.emit(gameConsts.FINISH_TEXT, {
+                this.emit(gameConsts.FINISH_TEXT, {
                     metal: content.podiumMedalType,
                     msg1: content.primaryMessage,
                     msg2: content.secondaryMessage
@@ -109,12 +108,10 @@ class WSHandler extends EventEmitter {
     getPacket(packet) {
         var l = ((new Date).getTime() - packet.ext.timesync.tc - packet.ext.timesync.p) / 2;
         var o = (packet.ext.timesync.ts - packet.ext.timesync.tc - l);
-        var ack;
-        var me = this;
-        me.msgID++;
+        this.msgID++;
         return [{
             channel: packet.channel,
-            clientId: me.clientID,
+            clientId: this.clientID,
             ext: {
                 ack: packet.ext.ack,
                 timesync: {
@@ -123,16 +120,15 @@ class WSHandler extends EventEmitter {
                     tc: (new Date).getTime()
                 }
             },
-            id: me.msgID + ""
+            id: this.msgID + ""
         }]
     }
 
     getSubmitPacket(questionChoice) {
-        var me = this;
-        me.msgID++;
+        this.msgID++;
         return [{
             channel: consts.SERVICE_CONTROLLER,
-            clientId: me.clientID,
+            clientId: this.clientID,
             data: {
                 content: JSON.stringify({
                     choice: questionChoice,
@@ -147,12 +143,12 @@ class WSHandler extends EventEmitter {
                         }
                     }
                 }),
-                gameid: me.gameID,
+                gameid: this.gameID,
                 host: consts.ENDPOINT_URI,
                 id: 6,
                 type: "message"
             },
-            id: me.msgID + ""
+            id: this.msgID + ""
         }]
     }
 
@@ -171,7 +167,6 @@ class WSHandler extends EventEmitter {
     }
 
     open() {
-        var me = this;
         this.connected = true;
         this.emit("open");
         var r = [{
@@ -196,54 +191,53 @@ class WSHandler extends EventEmitter {
                 version: "1.0"
             }
         }];
-        me.msgID++;
-        me.send(r);
+        this.msgID++;
+        this.send(r);
     }
 
     message(msg) {
-        var me = this;
         var data = JSON.parse(msg.data)[0];
         if (data.channel === consts.CHANNEL_HANDSHAKE && data.clientId) { // The server sent a handshake packet
             this.clientID = data.clientId;
-            var r = me.getPacket(data)[0];
+            var r = this.getPacket(data)[0];
             r.ext.ack = undefined;
             r.channel = consts.CHANNEL_SUBSCR;
-            r.clientId = me.clientID;
+            r.clientId = this.clientID;
             r.subscription = consts.SERVICE_CONTROLLER;
-            me.send(r);
+            this.send(r);
         } else if (data.channel === consts.CHANNEL_SUBSCR) {
             if (data.subscription === consts.SERVICE_CONTROLLER && data.successful == true) {
-                var playerSubscribe = me.getPacket(data)[0];
+                var playerSubscribe = this.getPacket(data)[0];
                 playerSubscribe.channel = consts.CHANNEL_SUBSCR;
-                playerSubscribe.clientId = me.clientID;
+                playerSubscribe.clientId = this.clientID;
                 playerSubscribe.subscription = consts.SERVICE_PLAYER;
-                me.send(playerSubscribe);
-                var connectionPacket = me.getPacket(data)[0];
+                this.send(playerSubscribe);
+                var connectionPacket = this.getPacket(data)[0];
                 connectionPacket.channel = consts.CHANNEL_CONN;
-                connectionPacket.clientId = me.clientID;
+                connectionPacket.clientId = this.clientID;
                 connectionPacket.connectionType = "websocket";
                 connectionPacket.advice = {
                     timeout: 0
                 };
-                me.send(connectionPacket);
-                var statusSubscribe = me.getPacket(data)[0];
+                this.send(connectionPacket);
+                var statusSubscribe = this.getPacket(data)[0];
                 statusSubscribe.channel = consts.CHANNEL_SUBSCR;
-                statusSubscribe.clientId = me.clientID;
+                statusSubscribe.clientId = this.clientID;
                 statusSubscribe.subscription = consts.SERVICE_STATUS;
-                me.send(statusSubscribe);
-                me.emit(gameConsts.READY);
+                this.send(statusSubscribe);
+                this.emit(gameConsts.READY);
             }
         } else if (data.data) {
             if (data.data.error) {
-                me.emit(gameConsts.ERROR, data.data.error);
+                this.emit(gameConsts.ERROR, data.data.error);
                 return;
             } else if (data.data.type === "loginResponse") {
-                me.emit(gameConsts.JOINED);
+                this.emit(gameConsts.JOINED);
             } else {
                 if (data.data.content) {
                     var cont = JSON.parse(data.data.content);
-                    if (me.dataHandler[data.data.id]) {
-                        me.dataHandler[data.data.id](data, cont);
+                    if (this.dataHandler[data.data.id]) {
+                        this.dataHandler[data.data.id](data, cont);
                     } else {
                         // console.log(data);
                     }
@@ -251,26 +245,25 @@ class WSHandler extends EventEmitter {
             }
         }
         if (data.ext && data.channel !== consts.CHANNEL_SUBSCR && data.channel !== consts.CHANNEL_HANDSHAKE) {
-            var m = me.getPacket(data);
-            me.send(m);
+            var m = this.getPacket(data);
+            this.send(m);
         }
     }
 
     login(name) {
-        var me = this;
-        me.name = name;
+        this.name = name;
         var joinPacket = [{
             channel: consts.SERVICE_CONTROLLER,
-            clientId: me.clientID,
+            clientId: this.clientID,
             data: {
-                gameid: me.gameID,
+                gameid: this.gameID,
                 host: consts.ENDPOINT_URI,
                 name: name,
                 type: "login"
             },
-            id: me.msgID + ""
+            id: this.msgID + ""
         }];
-        me.msgID++;
+        this.msgID++;
         this.send(joinPacket);
     }
 
