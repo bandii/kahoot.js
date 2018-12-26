@@ -30,7 +30,7 @@ class WsHandler extends EventEmitter {
             this.close();
         };
         this.ws.onerror = () => {
-            this.emit(consts.ERROR, data.data.error);
+            this.emit(consts.ERROR, "Error happened while trying to connect to the server.");
         };
     }
 

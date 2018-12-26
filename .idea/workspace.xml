@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38ce5c2-07e2-4228-801d-4f746ed06d3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wsHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wsHandler.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,11 +15,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/assets.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/wsHandler.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="461">
+              <caret line="32" column="90" selection-start-line="32" selection-start-column="90" selection-end-line="32" selection-end-column="90" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,13 +94,13 @@
         <option value="$PROJECT_DIR$/src/gameConsts.js" />
         <option value="$PROJECT_DIR$/src/kahoot.js" />
         <option value="$PROJECT_DIR$/src/wsConsts.js" />
-        <option value="$PROJECT_DIR$/src/wsHandler.js" />
         <option value="$PROJECT_DIR$/examples/basicUsage.js" />
         <option value="$PROJECT_DIR$/examples/advancedUsage.js" />
         <option value="$PROJECT_DIR$/examples/nemisis.js" />
         <option value="$PROJECT_DIR$/examples/quizInfo.js" />
         <option value="$PROJECT_DIR$/Documentation.md" />
         <option value="$PROJECT_DIR$/src/assets.js" />
+        <option value="$PROJECT_DIR$/src/wsHandler.js" />
       </list>
     </option>
   </component>
@@ -101,8 +111,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="401" />
-    <option name="y" value="-9" />
+    <option name="x" value="400" />
+    <option name="y" value="-10" />
     <option name="width" value="1460" />
     <option name="height" value="810" />
   </component>
@@ -178,6 +188,7 @@
       <workItem from="1545164427057" duration="6633000" />
       <workItem from="1545243966519" duration="5936000" />
       <workItem from="1545827785014" duration="13680000" />
+      <workItem from="1545852478376" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="First successfull connection to a game within a react-native app">
       <created>1545250099131</created>
@@ -239,7 +250,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26689000" />
+    <option name="totallyTimeSpent" value="26714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -288,9 +299,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/node_modules/https/package.json" />
     <entry file="file://$PROJECT_DIR$/node_modules/request/index.js" />
-    <entry file="file://$PROJECT_DIR$/node_modules/node-libs-react-native/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/node-libs-react-native/index.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/react-native-websocket/index.js" />
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -341,16 +350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="37" lean-forward="true" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/wsHandler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="78" column="14" lean-forward="true" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -427,7 +426,17 @@
     <entry file="file://$PROJECT_DIR$/src/assets.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/wsHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="32" column="90" selection-start-line="32" selection-start-column="90" selection-end-line="32" selection-end-column="90" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
