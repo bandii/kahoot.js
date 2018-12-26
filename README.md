@@ -1,16 +1,17 @@
 # About
-This fork is about to make the parent project work within ReactNative apps. This fork is kind of a test project, so you can use it only on your own risk!
+**This fork is about to make the parent project work within ReactNative apps. This fork is kind of a test project, so you can use it only on your own risk!**
 
 Kahoot.js is a library to interact with the Kahoot API. Currently kahoot.js supports joining and interacting with quizzes.
-**Installation requires Node.js 6.0.0 or higher.**  
-![NPM](https://nodei.co/npm/kahoot.js.png)
 
 # Basic Example
 ```js
 var Kahoot = require("kahoot.js");
 var client = new Kahoot;
 console.log("Joining kahoot...");
-client.join(9802345 /* Or any other kahoot game pin */, "kahoot.js");
+client.join(9802345 /* Or any other kahoot game pin */, "kahoot.js")
+    .catch(error => {
+            console.error(error);
+    });
 client.on("joined", () => {
     console.log("I joined the Kahoot!");
 });
