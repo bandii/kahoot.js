@@ -8,13 +8,14 @@ class Quiz {
 		this.questions = [];
 	}
 }
+
 class Question {
 	constructor(rawEvent, client) {
 		this.client = client;
 		this.quiz = client.quiz;
 		this.index = rawEvent.questionIndex;
 		this.timeLeft = rawEvent.timeLeft;
-		this.type = rawEvent.type,
+        this.type = rawEvent.type;
 		this.usesStoryBlocks = rawEvent.useStoryBlocks;
 		this.ended = false;
 		this.quiz.questions.push(this);
@@ -32,6 +33,7 @@ class Question {
 		});
 	}
 }
+
 class QuestionEndEvent {
 	constructor(rawEvent, client) {
 		this.client = client;
@@ -47,6 +49,7 @@ class QuestionEndEvent {
 		this.quiz.client.nemeses.push(this.nemesis);
 	}
 }
+
 class QuestionSubmitEvent {
 	constructor(message, client) {
 		this.message = message;
@@ -55,6 +58,7 @@ class QuestionSubmitEvent {
 		this.question = this.quiz.questions[this.quiz.questions.length - 1];
 	}
 }
+
 class Nemesis {
 	constructor(rawData) {
 		if (rawData) {
@@ -72,6 +76,7 @@ class Nemesis {
 		}
 	}
 }
+
 class FinishTextEvent {
 	constructor(rawEvent) {
 		this.fistMessage = rawEvent.msg1;
@@ -83,6 +88,7 @@ class FinishTextEvent {
 		this.metal = rawEvent.metal;
 	}
 }
+
 class QuizFinishEvent {
 	constructor(rawEvent, client) {
 		this.client = client;
@@ -94,6 +100,7 @@ class QuizFinishEvent {
 		this.incorrect = rawEvent.incorrect;
 	}
 }
+
 module.exports = {
 	Quiz: Quiz,
 	Question: Question,

@@ -6,15 +6,21 @@
 Kahoot client that can interact with quizzes.
 
 **Events**  
-`on('ready')` and `on('join')` - Emitted when the client joins the game.  
-`on('quizStart', Quiz)` and `on('quiz', Quiz)` - Emitted when the quiz starts for the client. Passes a `Quiz` class.  
-`on('question', Question)` - Emitted when the client receives a new question. This is NOT the same as the `questionStart` event, which is emitted after the question has started. Passes a `Question` class.  
-`on('questionStart', Question)` - Emitted when a question starts. Passes a `Question` class.  
-`on('questionSubmit', QuestionSubmitEvent)` - Emitted when your answer has been submitted. Passes a `QuestionSubmitEvent` class.  
-`on('questionEnd', QuestionEndEvent)` - Emitted when a question ends. Passes a `QuestionEndEvent` class.  
-`on('finish', QuizFinishEvent)` - Emitted when the quiz ends. Passes a `QuizFinishEvent` class.  
-`on('finishText', FinishTextEvent)` - Emitted when the quiz finish text is sent. Passes a `FinishTextEvent` class.  
-`on('quizEnd')` and `on('disconnect')` - Emitted when the quiz closes, and the client is disconnected.
+
+*See the gameConsts for the event names!*
+
+`import gameConsts from ".\gameConsts;`
+
+`on(gameConsts.READY)` and `on(gameConsts.JOINED)` - Emitted when the client joins the game.  
+`on(gameConsts.QUIZ_START, Quiz)` and `on(gameConsts.QUIZ, Quiz)` - Emitted when the quiz starts for the client. Passes a `Quiz` class.  
+`on(gameConsts.QUESTION, Question)` - Emitted when the client receives a new question. This is NOT the same as the `questionStart` event, which is emitted after the question has started. Passes a `Question` class.  
+`on(gameConsts.QUESTION_START, Question)` - Emitted when a question starts. Passes a `Question` class.  
+`on(gameConsts.QUESTION_SUBMIT, QuestionSubmitEvent)` - Emitted when your answer has been submitted. Passes a `QuestionSubmitEvent` class.  
+`on(gameConsts.QUESTION_END, QuestionEndEvent)` - Emitted when a question ends. Passes a `QuestionEndEvent` class.  
+`on(gameConsts.FINISH, QuizFinishEvent)` - Emitted when the quiz ends. Passes a `QuizFinishEvent` class.  
+`on(gameConsts.FINISH_TEXT, FinishTextEvent)` - Emitted when the quiz finish text is sent. Passes a `FinishTextEvent` class.  
+`on(gameConsts.QUIZ_END)` and `on(gameConsts.DISCONNECT)` - Emitted when the quiz closes, and the client is disconnected.
+`on(gameConsts.CLOSE)` - Closing the connection to the API
 
 **Methods**  
 `join(sessionID, playerName)`  
