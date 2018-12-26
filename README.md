@@ -1,5 +1,5 @@
 # About
-**This fork is about to make the parent project work within ReactNative apps. This fork is kind of a test project, so you can use it only on your own risk!**
+**This fork is about to make the parent project work within ReactNative apps. This fork is a kind of a test project, so you can use it only on your own risk!**
 
 Kahoot.js is a library to interact with the Kahoot API. Currently kahoot.js supports joining and interacting with quizzes.
 
@@ -38,4 +38,4 @@ client.join(11223344 /* Or any other kahoot token */, "kahoot.js")
 See [Documentation.md](Documentation.md).
 
 ## Examples
-See `examples/` and `tests/`.
+See the `examples/`.
