@@ -2,7 +2,7 @@ import EventEmitter from "events";
 import consts from "./wsConsts.js";
 import gameConsts from "./gameConsts";
 
-class WSHandler extends EventEmitter {
+class WsHandler extends EventEmitter {
     constructor(session, token, kahoot) {
         super();
         this.kahoot = kahoot;
@@ -30,7 +30,7 @@ class WSHandler extends EventEmitter {
             this.close();
         };
         this.ws.onerror = () => {
-            this.emit(gameConsts.ERROR, data.data.error);
+            this.emit(consts.ERROR, data.data.error);
         };
     }
 
@@ -86,7 +86,7 @@ class WSHandler extends EventEmitter {
             try {
                 this.ws.send(JSON.stringify(msg));
             } catch (e) {
-                this.emit(gameConsts.ERROR, e.message);
+                this.emit(consts.ERROR, e.message);
             }
         }
     }
@@ -160,7 +160,7 @@ class WSHandler extends EventEmitter {
             }
         } else if (data.data) {
             if (data.data.error) {
-                this.emit(gameConsts.ERROR, data.data.error);
+                this.emit(consts.ERROR, data.data.error);
                 return;
             } else if (data.data.type === "loginResponse") {
                 this.emit(gameConsts.JOINED);
@@ -294,4 +294,4 @@ class WSHandler extends EventEmitter {
     }
 }
 
-module.exports = WSHandler;
+module.exports = WsHandler;

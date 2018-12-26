@@ -1,10 +1,11 @@
 import EventEmitter from "events";
 import Promise from "promise";
-import Assets from "./Assets.js";
-import WSHandler from "./WSHandler.js";
+import Assets from "./assets.js";
+import WSHandler from "./wsHandler.js";
 import token from "./token";
 import consts from "./tokenConsts";
 import gameConsts from "./gameConsts";
+import wsConsts from "./wsConsts";
 
 global.Buffer = require('buffer').Buffer;
 
@@ -104,8 +105,10 @@ class Kahoot extends EventEmitter {
                     }
                     this.emit(gameConsts.GAME_INFO, this.quiz);
                 });
-                this._wsHandler.on(gameConsts.ERROR, errorMessage => {
-                    this.emit(gameConsts.ERROR, errorMessage);
+                this._wsHandler.on(wsConsts.ERROR, errorMessage => {
+                    // this.emit(gameConsts.ERROR, errorMessage);
+                    // Every error should be handled in one place
+                    reject(errorMessage);
                 });
             });
         });

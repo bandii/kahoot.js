@@ -14,7 +14,5 @@ module.exports = {
     QUESTION_START: "questionStart",
     FINISH_TEXT: "finishText",
     FINISH: "finish",
-    CLOSE: "close",
-
-    ERROR: "error"
+    CLOSE: "close"
 };
