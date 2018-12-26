@@ -4,6 +4,7 @@ import Assets from "./Assets.js";
 import WSHandler from "./WSHandler.js";
 import token from "./token";
 import consts from "./tokenConsts";
+import gameConsts from "./gameConsts";
 
 global.Buffer = require('buffer').Buffer;
 
@@ -22,90 +23,90 @@ class Kahoot extends EventEmitter {
     }
 
     join(session, name) {
-        var me = this;
-
         return new Promise((fulfill, reject) => {
             if (!session) {
                 reject("You need a sessionID to connect to a Kahoot!");
                 return;
             }
-
             if (!name) {
                 reject("You need a name to connect to a Kahoot!");
                 return;
             }
 
-            me.sessionID = session;
-            me.name = name;
+            this.sessionID = session;
+            this.name = name;
+
             token.resolve(session, (resolvedToken,
                                     responseCode,
                                     responseMessage) => {
                 if (responseCode !== consts.INNER_RESPONSES.OK) {
+                    console.error(responseMessage);
                     reject("Error happened while connecting to the server!");
                     return;
                 }
                 if (!resolvedToken) {
+                    console.error(responseMessage);
                     reject("Could not get a valid token!");
                     return;
                 }
 
-                me.token = resolvedToken;
-                me._wsHandler = new WSHandler(me.sessionID, me.token, me);
-                me._wsHandler.on("ready", () => {
-                    me._wsHandler.login(me.name);
+                this.token = resolvedToken;
+
+                this._wsHandler = new WSHandler(this.sessionID, this.token, this);
+                this._wsHandler.on(gameConsts.READY, () => {
+                    this._wsHandler.login(this.name);
                 });
-                me._wsHandler.on("joined", () => {
-                    me.emit("ready");
-                    me.emit("joined");
+                this._wsHandler.on(gameConsts.JOINED, () => {
+                    this.emit(gameConsts.READY);
+                    this.emit(gameConsts.JOINED);
                     fulfill();
                 });
-                me._wsHandler.on("quizData", quizInfo => {
-                    me.quiz = new Assets.Quiz(quizInfo.name, quizInfo.type, quizInfo.qCount, me);
-                    me.emit("quizStart", me.quiz);
-                    me.emit("quiz", me.quiz);
+                this._wsHandler.on(gameConsts.QUIZ_DATA, quizInfo => {
+                    this.quiz = new Assets.Quiz(quizInfo.name, quizInfo.type, quizInfo.qCount, this);
+                    this.emit(gameConsts.QUIZ_START, this.quiz);
+                    this.emit(gameConsts.QUIZ, this.quiz);
                 });
-                me._wsHandler.on("quizUpdate", updateInfo => {
-                    me.quiz.currentQuestion = new Assets.Question(updateInfo, me);
-                    me.emit("question", me.quiz.currentQuestion);
+                this._wsHandler.on(gameConsts.QUIZ_UPDATE, updateInfo => {
+                    this.quiz.currentQuestion = new Assets.Question(updateInfo, this);
+                    this.emit(gameConsts.QUESTION, this.quiz.currentQuestion);
                 });
-                me._wsHandler.on("questionEnd", endInfo => {
-                    var e = new Assets.QuestionEndEvent(endInfo, me);
-                    me.emit("questionEnd", e);
+                this._wsHandler.on(gameConsts.QUESTION_END, endInfo => {
+                    let e = new Assets.QuestionEndEvent(endInfo, this);
+                    this.emit(gameConsts.QUESTION_END, e);
                 });
-                me._wsHandler.on("quizEnd", () => {
-                    me.emit("quizEnd");
-                    me.emit("disconnect");
+                this._wsHandler.on(gameConsts.QUIZ_END, () => {
+                    this.emit(gameConsts.QUIZ_END);
+                    this.emit(gameConsts.DISCONNECT);
                 });
-                me._wsHandler.on("questionStart", () => {
-                    me.emit("questionStart", me.quiz.currentQuestion);
+                this._wsHandler.on(gameConsts.QUESTION_START, () => {
+                    this.emit(gameConsts.QUESTION_START, this.quiz.currentQuestion);
                 });
-                me._wsHandler.on("questionSubmit", message => {
-                    me.sendingAnswer = false;
-                    var e = new Assets.QuestionSubmitEvent(message, me);
-                    me.emit("questionSubmit", e);
+                this._wsHandler.on(gameConsts.QUESTION_SUBMIT, message => {
+                    this.sendingAnswer = false;
+                    let e = new Assets.QuestionSubmitEvent(message, this);
+                    this.emit(gameConsts.QUESTION_SUBMIT, e);
                     try {
-                        me._qFulfill(e);
+                        this._qFulfill(e);
                     } catch (e) {
                     }
                 });
-                me._wsHandler.on("finishText", data => {
-                    var e = new Assets.FinishTextEvent(data);
-                    me.emit("finishText", e);
+                this._wsHandler.on(gameConsts.FINISH_TEXT, data => {
+                    let e = new Assets.FinishTextEvent(data);
+                    this.emit(gameConsts.FINISH_TEXT, e);
                 });
-                me._wsHandler.on("finish", data => {
-                    var e = new Assets.QuizFinishEvent(data, me);
-                    me.emit("finish", e);
+                this._wsHandler.on(gameConsts.FINISH, data => {
+                    let e = new Assets.QuizFinishEvent(data, this);
+                    this.emit(gameConsts.FINISH, e);
                 });
             });
         });
     }
 
     answerQuestion(id) {
-        var me = this;
         return new Promise((fulfill, reject) => {
-            me._qFulfill = fulfill;
-            me.sendingAnswer = true;
-            me._wsHandler.sendSubmit(id);
+            this._qFulfill = fulfill;
+            this.sendingAnswer = true;
+            this._wsHandler.sendSubmit(id);
         });
     }
 

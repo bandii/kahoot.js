@@ -45,8 +45,7 @@ class TokenJS {
     static resolve(sessionID, callback) {
         let me = new TokenJS();
 
-        me._requestToken(sessionID, (headerToken, challenge,
-                                     responseCode, responseMessage) => {
+        me._requestToken(sessionID, (headerToken, challenge, responseCode, responseMessage) => {
             if (responseCode === consts.INNER_RESPONSES.OK
                 && headerToken && challenge) {
                 let token1 = TokenJS._decodeBase64(headerToken);
