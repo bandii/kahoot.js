@@ -1,4 +1,12 @@
 class Quiz {
+    client = "";
+    name = "";
+    type = "";
+    answerCount = "";
+    currentQuestion = null;
+    questions = [];
+    playerName = "";
+
 	constructor(name, type, answerCount, client) {
 		this.client = client;
 		this.name = name;

@@ -1,5 +1,6 @@
 import EventEmitter from "events";
 import consts from "./wsConsts.js";
+import gameConsts from "./gameConsts";
 
 class WSHandler extends EventEmitter {
     constructor(session, token, kahoot) {
@@ -12,10 +13,8 @@ class WSHandler extends EventEmitter {
         this.gameID = session;
         this.name = "";
         this.firstQuizEvent = false;
-        this.lastReceivedQ = null;
-        this.ws = new WebSocket(consts.WSS_ENDPOINT + session + "/" + token, {
-            origin: "https://kahoot.it/"
-        });
+
+        this.ws = new WebSocket(consts.WSS_ENDPOINT + session + "/" + token);
         // Create anonymous callbacks to prevent an event emitter loop
         this.ws.onopen = () => {
             me.open();
@@ -28,12 +27,12 @@ class WSHandler extends EventEmitter {
             me.close();
         };
         this.ws.onerror = () => {
-            me.emit("error", data.data.error);
+            me.emit(gameConsts.ERROR, data.data.error);
         };
         this.dataHandler = {
             1: (data, content) => {
                 if (!me.kahoot.quiz.currentQuestion) {
-                    me.emit("quizUpdate", {
+                    me.emit(gameConsts.QUIZ_UPDATE, {
                         questionIndex: content.questionIndex,
                         timeLeft: content.timeLeft,
                         type: content.gameBlockType,
@@ -41,7 +40,7 @@ class WSHandler extends EventEmitter {
                         ansMap: content.answerMap
                     });
                 } else if (content.questionIndex > me.kahoot.quiz.currentQuestion.index) {
-                    me.emit("quizUpdate", {
+                    me.emit(gameConsts.QUIZ_UPDATE, {
                         questionIndex: content.questionIndex,
                         timeLeft: content.timeLeft,
                         type: content.gameBlockType,
@@ -51,10 +50,10 @@ class WSHandler extends EventEmitter {
                 }
             },
             2: (data, content) => {
-                me.emit("questionStart");
+                me.emit(gameConsts.QUESTION_START);
             },
             3: (data, content) => {
-                me.emit("finish", {
+                me.emit(gameConsts.FINISH, {
                     playerCount: content.playerCount,
                     quizID: content.quizID,
                     rank: content.rank,
@@ -63,11 +62,11 @@ class WSHandler extends EventEmitter {
                 });
             },
             7: (data, content) => {
-                me.emit("questionSubmit", content.primaryMessage);
+                me.emit(gameConsts.QUESTION_SUBMIT, content.primaryMessage);
             },
             8: (data, content) => {
                 // console.log(data);
-                me.emit("questionEnd", {
+                me.emit(gameConsts.QUESTION_END, {
                     correctAnswers: content.correctAnswers,
                     correct: content.isCorrect,
                     points: content.points,
@@ -81,7 +80,7 @@ class WSHandler extends EventEmitter {
             9: (data, content) => {
                 if (!me.firstQuizEvent) {
                     me.firstQuizEvent = true;
-                    me.emit("quizData", {
+                    me.emit(gameConsts.QUIZ_DATA, {
                         name: content.quizName,
                         type: content.quizType,
                         qCount: content.quizQuestionAnswers[0]
@@ -90,7 +89,7 @@ class WSHandler extends EventEmitter {
             },
             10: (data, content) => {
                 // The quiz has ended
-                me.emit("quizEnd");
+                me.emit(gameConsts.QUIZ_END);
                 try {
                     me.ws.close();
                 } catch (e) {
@@ -98,22 +97,11 @@ class WSHandler extends EventEmitter {
                 }
             },
             13: (data, content) => {
-                me.emit("finishText", {
+                me.emit(gameConsts.FINISH_TEXT, {
                     metal: content.podiumMedalType,
                     msg1: content.primaryMessage,
                     msg2: content.secondaryMessage
                 });
-            }
-        }
-    }
-
-    getExt() {
-        return {
-            ack: true,
-            timesync: {
-                l: 0,
-                o: 0,
-                tc: (new Date).getTime()
             }
         }
     }
@@ -143,7 +131,7 @@ class WSHandler extends EventEmitter {
         var me = this;
         me.msgID++;
         return [{
-            channel: "/service/controller",
+            channel: consts.SERVICE_CONTROLLER,
             clientId: me.clientID,
             data: {
                 content: JSON.stringify({
@@ -151,7 +139,7 @@ class WSHandler extends EventEmitter {
                     meta: {
                         lag: 30,
                         device: {
-                            userAgent: "kahoot.js",
+                            userAgent: consts.USER_AGENT,
                             screen: {
                                 width: 1920,
                                 height: 1050
@@ -215,20 +203,20 @@ class WSHandler extends EventEmitter {
     message(msg) {
         var me = this;
         var data = JSON.parse(msg.data)[0];
-        if (data.channel == consts.CHANNEL_HANDSHAKE && data.clientId) { // The server sent a handshake packet
+        if (data.channel === consts.CHANNEL_HANDSHAKE && data.clientId) { // The server sent a handshake packet
             this.clientID = data.clientId;
             var r = me.getPacket(data)[0];
             r.ext.ack = undefined;
             r.channel = consts.CHANNEL_SUBSCR;
             r.clientId = me.clientID;
-            r.subscription = "/service/controller";
+            r.subscription = consts.SERVICE_CONTROLLER;
             me.send(r);
-        } else if (data.channel == consts.CHANNEL_SUBSCR) {
-            if (data.subscription == "/service/controller" && data.successful == true) {
+        } else if (data.channel === consts.CHANNEL_SUBSCR) {
+            if (data.subscription === consts.SERVICE_CONTROLLER && data.successful == true) {
                 var playerSubscribe = me.getPacket(data)[0];
                 playerSubscribe.channel = consts.CHANNEL_SUBSCR;
                 playerSubscribe.clientId = me.clientID;
-                playerSubscribe.subscription = "/service/player";
+                playerSubscribe.subscription = consts.SERVICE_PLAYER;
                 me.send(playerSubscribe);
                 var connectionPacket = me.getPacket(data)[0];
                 connectionPacket.channel = consts.CHANNEL_CONN;
@@ -241,17 +229,16 @@ class WSHandler extends EventEmitter {
                 var statusSubscribe = me.getPacket(data)[0];
                 statusSubscribe.channel = consts.CHANNEL_SUBSCR;
                 statusSubscribe.clientId = me.clientID;
-                statusSubscribe.subscription = "/service/status";
+                statusSubscribe.subscription = consts.SERVICE_STATUS;
                 me.send(statusSubscribe);
-                me.emit("ready");
+                me.emit(gameConsts.READY);
             }
         } else if (data.data) {
             if (data.data.error) {
-                me.emit("error", data.data.error);
+                me.emit(gameConsts.ERROR, data.data.error);
                 return;
-            } else if (data.data.type == "loginResponse") {
-                // "/service/controller"
-                me.emit("joined");
+            } else if (data.data.type === "loginResponse") {
+                me.emit(gameConsts.JOINED);
             } else {
                 if (data.data.content) {
                     var cont = JSON.parse(data.data.content);
@@ -263,7 +250,7 @@ class WSHandler extends EventEmitter {
                 }
             }
         }
-        if (data.ext && data.channel !== "/meta/subscribe" && data.channel !== "/meta/handshake") {
+        if (data.ext && data.channel !== consts.CHANNEL_SUBSCR && data.channel !== consts.CHANNEL_HANDSHAKE) {
             var m = me.getPacket(data);
             me.send(m);
         }
@@ -273,7 +260,7 @@ class WSHandler extends EventEmitter {
         var me = this;
         me.name = name;
         var joinPacket = [{
-            channel: "/service/controller",
+            channel: consts.SERVICE_CONTROLLER,
             clientId: me.clientID,
             data: {
                 gameid: me.gameID,
@@ -289,7 +276,10 @@ class WSHandler extends EventEmitter {
 
     close() {
         this.connected = false;
-        this.emit("close");
+        this.ws.onclose = () => {
+        };
+        this.ws.close();
+        this.emit(gameConsts.CLOSE);
     }
 }
 

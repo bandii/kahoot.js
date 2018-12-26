@@ -1,6 +1,7 @@
 module.exports = {
     READY: "ready",
     JOINED: "joined",
+    GAME_INFO: "gameInfo",
     QUIZ_DATA: "quizData",
     QUIZ_START: "quizStart",
     QUIZ: "quiz",
@@ -12,5 +13,8 @@ module.exports = {
     QUESTION_END: "questionEnd",
     QUESTION_START: "questionStart",
     FINISH_TEXT: "finishText",
-    FINISH: "finish"
+    FINISH: "finish",
+    CLOSE: "close",
+
+    ERROR: "error"
 };

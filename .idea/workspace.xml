@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38ce5c2-07e2-4228-801d-4f746ed06d3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/gameConsts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Documentation.md" beforeDir="false" afterPath="$PROJECT_DIR$/Documentation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Assets.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WSHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/WSHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameConsts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameConsts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/kahoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kahoot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/token.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/token.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wsConsts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wsConsts.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,28 +20,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tokenConsts.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kahoot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Assets.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+            <state relative-caret-position="1904">
+              <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -51,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WSHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="205" column="26" lean-forward="true" selection-start-line="205" selection-start-column="26" selection-end-line="205" selection-end-column="26" />
+            <state relative-caret-position="527">
+              <caret line="280" column="34" selection-start-line="280" selection-start-column="34" selection-end-line="280" selection-end-column="34" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -71,36 +51,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>on(</find>
-      <find>ready</find>
-      <find>fetc</find>
-      <find>dataHandler</find>
-      <find>ws&quot;</find>
-      <find>session</find>
-      <find>question&quot;</find>
-      <find>questionstart</find>
-      <find>this.quiz</find>
-      <find>quiz =</find>
       <find>resol</find>
       <find>TOKEN_ENDPOINT</find>
       <find>header</find>
       <find>onResponse</find>
       <find>TOKEN_RESPONSES</find>
-      <find>consts</find>
       <find>questionStart</find>
       <find>OPEN</find>
       <find>LOGIN</find>
       <find>responsemessage</find>
       <find>let</find>
-      <find>var</find>
       <find>me</find>
-      <find>me.</find>
       <find>userAgent</find>
       <find>user</find>
       <find>&quot;kahoot.js&quot;</find>
       <find>err</find>
       <find>&quot;error&quot;</find>
       <find>question</find>
+      <find>lastReceivedQ</find>
+      <find>consts</find>
+      <find>var</find>
+      <find>error</find>
+      <find>ws.close</find>
+      <find>me.</find>
+      <find>me)</find>
+      <find>let me</find>
+      <find>Quiz</find>
+      <find>on(gameConsts.FINISH</find>
+      <find>QUIZ_DATA</find>
+      <find>sendSubmit</find>
+      <find>_wsHandler</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,13 +94,13 @@
         <option value="$PROJECT_DIR$/examples/quizInfo.js" />
         <option value="$PROJECT_DIR$/examples/nemisis.js" />
         <option value="$PROJECT_DIR$/examples/basicUsage.js" />
-        <option value="$PROJECT_DIR$/src/Assets.js" />
         <option value="$PROJECT_DIR$/src/tokenConsts.js" />
         <option value="$PROJECT_DIR$/examples/advancedUsage.js" />
-        <option value="$PROJECT_DIR$/src/gameConsts.js" />
         <option value="$PROJECT_DIR$/src/token.js" />
-        <option value="$PROJECT_DIR$/src/kahoot.js" />
         <option value="$PROJECT_DIR$/src/wsConsts.js" />
+        <option value="$PROJECT_DIR$/src/gameConsts.js" />
+        <option value="$PROJECT_DIR$/src/Assets.js" />
+        <option value="$PROJECT_DIR$/src/kahoot.js" />
         <option value="$PROJECT_DIR$/src/WSHandler.js" />
       </list>
     </option>
@@ -132,8 +112,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="-10" />
+    <option name="x" value="27" />
+    <option name="y" value="-9" />
     <option name="width" value="1460" />
     <option name="height" value="810" />
   </component>
@@ -208,7 +188,7 @@
       <updated>1545164425651</updated>
       <workItem from="1545164427057" duration="6633000" />
       <workItem from="1545243966519" duration="5936000" />
-      <workItem from="1545827785014" duration="3841000" />
+      <workItem from="1545827785014" duration="9398000" />
     </task>
     <task id="LOCAL-00001" summary="First successfull connection to a game within a react-native app">
       <created>1545250099131</created>
@@ -224,21 +204,28 @@
       <option name="project" value="LOCAL" />
       <updated>1545256301703</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- Define game related constants">
+      <created>1545831932955</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545831932955</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16410000" />
+    <option name="totallyTimeSpent" value="21967000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17977528" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17977528" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.51133144" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3101983" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -264,7 +251,8 @@
     <MESSAGE value="First successfull connection to a game within a react-native app" />
     <MESSAGE value="- Change imports&#10;- Minor refactor on the token.js&#10;- token.js will be a little more talkative at errors&#10;- possible errors from token.js (Promise.rejections)&#10;- Separating the constants" />
     <MESSAGE value="- Change imports&#10;- Minor refactor on the token.js&#10;- token.js will be a little more talkative at errors&#10;- possible errors from token.js (Promise.rejections)&#10;- Separating the constants&#10;- Modifying the examples" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Change imports&#10;- Minor refactor on the token.js&#10;- token.js will be a little more talkative at errors&#10;- possible errors from token.js (Promise.rejections)&#10;- Separating the constants&#10;- Modifying the examples" />
+    <MESSAGE value="- Define game related constants" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Define game related constants" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -272,40 +260,33 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
-          <line>175</line>
+          <url>file://$PROJECT_DIR$/src/kahoot.js</url>
+          <line>88</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
-          <line>237</line>
+          <line>275</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
-          <line>30</line>
+          <line>243</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/WSHandler.js</url>
-          <line>246</line>
+          <url>file://$PROJECT_DIR$/src/kahoot.js</url>
+          <line>64</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.11.2/node-typings/node_modules/@types/node/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2077" column="15" selection-start-line="2077" selection-start-column="15" selection-end-line="2077" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/https/package.json" />
     <entry file="file://$PROJECT_DIR$/node_modules/request/index.js" />
     <entry file="file://$PROJECT_DIR$/tests/answers.js">
@@ -315,13 +296,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-native-websocket/index.js" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -353,13 +327,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="16184" column="12" selection-start-line="16184" selection-start-column="12" selection-end-line="16184" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tokenConsts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -374,10 +341,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gameConsts.js">
+    <entry file="file://$PROJECT_DIR$/examples/basicUsage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="34" />
+        <state relative-caret-position="255">
+          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -388,31 +355,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/examples/basicUsage.js">
+    <entry file="file://$PROJECT_DIR$/Documentation.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="141">
+            <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.11.2/node-typings/node_modules/@types/node/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        <state relative-caret-position="227">
+          <caret line="606" column="8" selection-start-line="606" selection-start-column="8" selection-end-line="606" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16165" column="4" selection-start-line="16165" selection-start-column="4" selection-end-line="16165" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gameConsts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Assets.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        <state relative-caret-position="51">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kahoot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
+        <state relative-caret-position="1904">
+          <caret line="118" column="28" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WSHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="205" column="26" lean-forward="true" selection-start-line="205" selection-start-column="26" selection-end-line="205" selection-end-column="26" />
+        <state relative-caret-position="527">
+          <caret line="280" column="34" selection-start-line="280" selection-start-column="34" selection-end-line="280" selection-end-column="34" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>

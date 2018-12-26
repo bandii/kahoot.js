@@ -71,8 +71,7 @@ class Kahoot extends EventEmitter {
                     this.emit(gameConsts.QUESTION, this.quiz.currentQuestion);
                 });
                 this._wsHandler.on(gameConsts.QUESTION_END, endInfo => {
-                    let e = new Assets.QuestionEndEvent(endInfo, this);
-                    this.emit(gameConsts.QUESTION_END, e);
+                    this.emit(gameConsts.QUESTION_END, new Assets.QuestionEndEvent(endInfo, this));
                 });
                 this._wsHandler.on(gameConsts.QUIZ_END, () => {
                     this.emit(gameConsts.QUIZ_END);
@@ -91,12 +90,17 @@ class Kahoot extends EventEmitter {
                     }
                 });
                 this._wsHandler.on(gameConsts.FINISH_TEXT, data => {
-                    let e = new Assets.FinishTextEvent(data);
-                    this.emit(gameConsts.FINISH_TEXT, e);
+                    this.emit(gameConsts.FINISH_TEXT, new Assets.FinishTextEvent(data));
                 });
                 this._wsHandler.on(gameConsts.FINISH, data => {
-                    let e = new Assets.QuizFinishEvent(data, this);
-                    this.emit(gameConsts.FINISH, e);
+                    this.emit(gameConsts.FINISH, new Assets.QuizFinishEvent(data, this));
+                });
+                this._wsHandler.on(gameConsts.GAME_INFO, data => {
+                    if (this.quiz) {
+                        this.quiz.playerName = data.playerName;
+                        this.quiz.type = data.quizType;
+                    }
+                    this.emit(gameConsts.GAME_INFO, this.quiz);
                 });
             });
         });
@@ -112,7 +116,7 @@ class Kahoot extends EventEmitter {
 
     leave() {
         return new Promise((fulfill, reject) => {
-            this._wsHandler.ws.close();
+            this._wsHandler.close();
             fulfill();
         });
     }
