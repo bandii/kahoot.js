@@ -104,6 +104,9 @@ class Kahoot extends EventEmitter {
                     }
                     this.emit(gameConsts.GAME_INFO, this.quiz);
                 });
+                this._wsHandler.on(gameConsts.ERROR, errorMessage => {
+                    this.emit(gameConsts.ERROR, errorMessage);
+                });
             });
         });
     }
