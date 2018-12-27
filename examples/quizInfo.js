@@ -7,7 +7,7 @@ console.log("Joining kahoot...");
 client.join(11223344 /* Or any other kahoot token */, "kahoot.js")
     .then(() => {
 	console.log("Joined the kahoot. Waiting for it to start.");
-        client.on(gameConsts.QUIZ, quiz => {
+        client.on(gameConsts.QUIZ_START, quiz => {
 		console.log("The quiz has started!");
 		console.log("Quiz name:", quiz.name);
 		console.log("Quiz type:", quiz.type);

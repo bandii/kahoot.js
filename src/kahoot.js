@@ -65,7 +65,6 @@ class Kahoot extends EventEmitter {
                 this._wsHandler.on(gameConsts.QUIZ_DATA, quizInfo => {
                     this.quiz = new Assets.Quiz(quizInfo.name, quizInfo.type, quizInfo.qCount, this);
                     this.emit(gameConsts.QUIZ_START, this.quiz);
-                    this.emit(gameConsts.QUIZ, this.quiz);
                 });
                 this._wsHandler.on(gameConsts.QUIZ_UPDATE, updateInfo => {
                     this.quiz.currentQuestion = new Assets.Question(updateInfo, this);

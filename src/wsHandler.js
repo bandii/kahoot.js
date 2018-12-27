@@ -177,6 +177,8 @@ class WsHandler extends EventEmitter {
     }
 
     _handleData(dataId, data, content) {
+        console.log("kahoot dataId: " + dataId + "\r\ndata: " + JSON.stringify(content));
+
         switch (dataId) {
             case 1:
                 if (!this.kahoot.quiz.currentQuestion) {
@@ -217,7 +219,6 @@ class WsHandler extends EventEmitter {
 
                 break;
             case 8:
-                // console.log(data);
                 this.emit(gameConsts.QUESTION_END, {
                     correctAnswers: content.correctAnswers,
                     correct: content.isCorrect,

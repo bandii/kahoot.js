@@ -12,7 +12,7 @@ Kahoot client that can interact with quizzes.
 `import gameConsts from ".\gameConsts;`
 
 `on(gameConsts.READY)` and `on(gameConsts.JOINED)` - Emitted when the client joins the game.  
-`on(gameConsts.QUIZ_START, Quiz)` and `on(gameConsts.QUIZ, Quiz)` - Emitted when the quiz starts for the client. Passes a `Quiz` class.  
+`on(gameConsts.QUIZ_START, Quiz)` - Emitted when the quiz starts for the client. Passes a `Quiz` class.  
 `on(gameConsts.QUESTION, Question)` - Emitted when the client receives a new question. This is NOT the same as the `questionStart` event, which is emitted after the question has started. Passes a `Question` class.  
 `on(gameConsts.QUESTION_START, Question)` - Emitted when a question starts. Passes a `Question` class.  
 `on(gameConsts.QUESTION_SUBMIT, QuestionSubmitEvent)` - Emitted when your answer has been submitted. Passes a `QuestionSubmitEvent` class.  

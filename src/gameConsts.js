@@ -4,7 +4,6 @@ module.exports = {
     GAME_INFO: "gameInfo",
     QUIZ_DATA: "quizData",
     QUIZ_START: "quizStart",
-    QUIZ: "quiz",
     QUIZ_UPDATE: "quizUpdate",
     QUESTION: "question",
     QUIZ_END: "quiz_end",
