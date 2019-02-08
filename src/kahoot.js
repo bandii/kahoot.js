@@ -24,6 +24,12 @@ class Kahoot extends EventEmitter {
     }
 
     join(session, name) {
+        if (!session || !name) {
+            return new Promise((fulfill, reject) => {
+                reject("Unable to start kahoot! Missing parameters!");
+            });
+        }
+
         return new Promise((fulfill, reject) => {
             if (!session) {
                 reject("You need a sessionID to connect to a Kahoot!");
@@ -41,13 +47,15 @@ class Kahoot extends EventEmitter {
                                     responseCode,
                                     responseMessage) => {
                 if (responseCode !== consts.INNER_RESPONSES.OK) {
-                    console.error(responseMessage);
+                    //console.error(responseMessage);
                     reject("Error happened while connecting to the server!");
+                    this.leave();
                     return;
                 }
                 if (!resolvedToken) {
-                    console.error(responseMessage);
+                    //console.error(responseMessage);
                     reject("Could not get a valid token!");
+                    this.leave();
                     return;
                 }
 
@@ -87,8 +95,9 @@ class Kahoot extends EventEmitter {
                     try {
                         this._qFulfill(e);
                     } catch (e) {
-                        console.error(e.message);
+                        //console.error(e.message);
                         this.emit(gameConsts.ERROR, e.message);
+                        this.leave();
                     }
                 });
                 this._wsHandler.on(gameConsts.FINISH_TEXT, data => {
@@ -108,6 +117,7 @@ class Kahoot extends EventEmitter {
                     // this.emit(gameConsts.ERROR, errorMessage);
                     // Every error should be handled in one place
                     reject(errorMessage);
+                    this.leave();
                 });
             });
         });
@@ -124,6 +134,7 @@ class Kahoot extends EventEmitter {
     leave() {
         return new Promise((fulfill, reject) => {
             this._wsHandler.close();
+            this._wsHandler = null;
             fulfill();
         });
     }

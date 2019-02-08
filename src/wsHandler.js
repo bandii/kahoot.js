@@ -31,6 +31,7 @@ class WsHandler extends EventEmitter {
         };
         this.ws.onerror = () => {
             this.emit(consts.ERROR, "Error happened while trying to connect to the server.");
+            this.close();
         };
     }
 
@@ -87,6 +88,7 @@ class WsHandler extends EventEmitter {
                 this.ws.send(JSON.stringify(msg));
             } catch (e) {
                 this.emit(consts.ERROR, e.message);
+                this.close();
             }
         }
     }
@@ -161,6 +163,7 @@ class WsHandler extends EventEmitter {
         } else if (data.data) {
             if (data.data.error) {
                 this.emit(consts.ERROR, data.data.error);
+                this.close();
                 return;
             } else if (data.data.type === "loginResponse") {
                 this.emit(gameConsts.JOINED);
@@ -292,6 +295,7 @@ class WsHandler extends EventEmitter {
         };
         this.ws.close();
         this.emit(gameConsts.CLOSE);
+        this.ws = null;
     }
 }
 
