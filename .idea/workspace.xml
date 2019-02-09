@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c38ce5c2-07e2-4228-801d-4f746ed06d3f" name="Default Changelist" comment="- remove console.errors&#10;- parameter validation in the join&#10;- trying to leave\close the connection when an error happens">
+    <list default="true" id="c38ce5c2-07e2-4228-801d-4f746ed06d3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/kahoot.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/kahoot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wsHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wsHandler.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,11 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/kahoot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="136" column="35" selection-start-line="136" selection-start-column="35" selection-end-line="136" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="209">
+              <caret line="115" column="49" selection-start-line="115" selection-start-column="44" selection-end-line="115" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -41,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/wsHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="32" column="42" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="42" />
+            <state relative-caret-position="240">
+              <caret line="171" column="32" selection-start-line="171" selection-start-column="32" selection-end-line="171" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -67,7 +62,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lastReceivedQ</find>
       <find>consts</find>
       <find>ws.close</find>
       <find>me)</find>
@@ -97,6 +91,7 @@
       <find>join</find>
       <find>close</find>
       <find>error</find>
+      <find>leave</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -219,7 +214,7 @@
       <workItem from="1545853899253" duration="129000" />
       <workItem from="1545854357766" duration="9000" />
       <workItem from="1545912513858" duration="2899000" />
-      <workItem from="1549654950712" duration="1570000" />
+      <workItem from="1549654950712" duration="1601000" />
     </task>
     <task id="LOCAL-00001" summary="First successfull connection to a game within a react-native app">
       <created>1545250099131</created>
@@ -284,11 +279,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545852674405</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="- remove console.errors&#10;- parameter validation in the join&#10;- trying to leave\close the connection when an error happens">
+      <created>1549656872380</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1549656872380</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31759000" />
+    <option name="totallyTimeSpent" value="31790000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -341,7 +343,8 @@
     <MESSAGE value="- Change var to let&#10;- Change the dataHandler function to a method with a switch-case" />
     <MESSAGE value="- ErrorHandling possibilities" />
     <MESSAGE value="- minor fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="- minor fix" />
+    <MESSAGE value="- remove console.errors&#10;- parameter validation in the join&#10;- trying to leave\close the connection when an error happens" />
+    <option name="LAST_COMMIT_MESSAGE" value="- remove console.errors&#10;- parameter validation in the join&#10;- trying to leave\close the connection when an error happens" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -465,18 +468,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/kahoot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="136" column="35" selection-start-line="136" selection-start-column="35" selection-end-line="136" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="209">
+          <caret line="115" column="49" selection-start-line="115" selection-start-column="44" selection-end-line="115" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/wsHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="32" column="42" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="42" />
+        <state relative-caret-position="240">
+          <caret line="171" column="32" selection-start-line="171" selection-start-column="32" selection-end-line="171" selection-end-column="32" />
         </state>
       </provider>
     </entry>

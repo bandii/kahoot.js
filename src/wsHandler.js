@@ -291,11 +291,13 @@ class WsHandler extends EventEmitter {
 
     close() {
         this.connected = false;
-        this.ws.onclose = () => {
-        };
-        this.ws.close();
-        this.emit(gameConsts.CLOSE);
-        this.ws = null;
+        if (this.ws) {
+            this.ws.onclose = () => {
+            };
+            this.ws.close();
+            this.emit(gameConsts.CLOSE);
+            this.ws = null;
+        }
     }
 }
 
