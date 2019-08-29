@@ -35,23 +35,33 @@ class WsHandler extends EventEmitter {
         };
     }
 
-    _getPacket(packet) {
-        let l = ((new Date).getTime() - packet.ext.timesync.tc - packet.ext.timesync.p) / 2;
-        let o = (packet.ext.timesync.ts - packet.ext.timesync.tc - l);
+    _getPacketWithoutTimeSync(packet) {
         this.msgID++;
         return [{
             channel: packet.channel,
             clientId: this.clientID,
             ext: {
                 ack: packet.ext.ack,
-                timesync: {
-                    l: l,
-                    o: o,
-                    tc: (new Date).getTime()
-                }
             },
             id: this.msgID + ""
         }]
+    }
+
+    _getPacket(packet) {
+        let ret = this._getPacketWithoutTimeSync(packet);
+
+        if (packet.ext && packet.ext.timesync) {
+            let l = ((new Date).getTime() - packet.ext.timesync.tc - packet.ext.timesync.p) / 2;
+            let o = (packet.ext.timesync.ts - packet.ext.timesync.tc - l);
+
+            ret[0].ext.timesync = {
+                l: l,
+                o: o,
+                tc: (new Date).getTime()
+            };
+        }
+
+        return ret;
     }
 
     _getSubmitPacket(questionChoice) {
